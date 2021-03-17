@@ -26,5 +26,5 @@ jobs:
           npm run deploy --prefix ./assets
           mix phx.digest
           MIX_ENV=prod mix release --overwrite
-          _build/prod/rel/undi/bin/undi stop
+          _build/prod/rel/undi/bin/undi restart
           _build/prod/rel/undi/bin/undi daemon
