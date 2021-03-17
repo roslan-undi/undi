@@ -1,0 +1,30 @@
+name: Deployment Workflow
+
+on:
+  
+  push:
+    branches: [ main ]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using key
+      uses: appleboy/ssh-action@master
+      with:
+        host: undionline.com
+        username: roslan
+        key: ${{ secrets.UNDI_SERVER }}
+        port: 22
+        script: |
+          cd undi
+          git pull origin main
+          mix deps.get --only prod
+          MIX_ENV=prod mix compile
+          MIX_ENV=prod mix ecto.migrate
+          npm run deploy --prefix ./assets
+          mix phx.digest
+          MIX_ENV=prod mix release --overwrite
+          _build/prod/rel/votes/bin/undi stop
+          _build/prod/rel/votes/bin/undi daemon
