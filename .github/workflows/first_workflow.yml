@@ -19,7 +19,7 @@ jobs:
         port: 22
         script: |
           cd undi
-          git push origin main
+          git pull origin main
           mix deps.get --only prod
           MIX_ENV=prod mix compile
           MIX_ENV=prod mix ecto.migrate
