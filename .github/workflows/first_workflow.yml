@@ -13,8 +13,8 @@ jobs:
     - name: executing remote ssh commands using key
       uses: appleboy/ssh-action@master
       with:
-        host: undionline.com
-        username: roslan
+        host: www.undionline.com
+        username: roslan-undi
         key: ${{ secrets.UNDI_SERVER }}
         port: 22
         script: |
