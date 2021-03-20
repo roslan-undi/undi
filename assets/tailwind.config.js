@@ -176,6 +176,7 @@ module.exports = {
     '../lib/**/*.ex',
     '../lib/**/*.leex',
     '../lib/**/*.eex',
-    './js/**/*.js'
+    './js/**/*.js',
+    './css/**/*.css',
   ],
 };
