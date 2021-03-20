@@ -2,7 +2,7 @@ use Mix.Config
 
 # Configure your database
 config :undi, Undi.Repo,
-  username: "roslan-undi",
+  username: "roslan",
   password: "ramblingros",
   database: "undi_dev",
   hostname: "localhost",
